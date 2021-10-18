@@ -9,12 +9,14 @@ wins_combo = [(1, 2, 3),
               (1, 5, 9),
               (3, 5, 7)]
 
+
 def draw_board():
     """" Function to draw playing board """
     print('_____________')
     for i in range(3):
         print('|', board[0 + i * 3], '|', board[1 + i * 3], '|', board[2 + i * 3], '|')
     print('-------------')
+
 
 def take_input(player_sign):
     """ Function to take which place was chousen by player """
@@ -31,11 +33,11 @@ def take_input(player_sign):
         break
 
 
-def check_win():
+def check_win(board_w):
     """ Function to check win """
     for each in wins_combo:
-        if (board[each[0] - 1]) == (board[each[1] - 1]) == (board[each[2] - 1]):
-            return board[each[1] - 1]
+        if (board_w[each[0] - 1]) == (board_w[each[1] - 1]) == (board_w[each[2] - 1]):
+            return board_w[each[1] - 1]
     return False
 
 
@@ -65,7 +67,7 @@ def main():
             take_input('O')
             winner = player_2
         if counter > 3:
-            win = check_win()
+            win = check_win(board)
             if win:
                 draw_board()
                 print('Выиграл игрок', winner, 'Поздравляем!')
